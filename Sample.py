@@ -8,4 +8,4 @@ plt.plot(x, np.sin(x))       # Plot the sine of each x point
 plt.show() 
 
 print (y)
-
+print (z)
