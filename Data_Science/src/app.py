@@ -40,20 +40,24 @@ skinthickness = st.sidebar.slider("Skin Thickness", 0, 99, 20, 1)
 bloodpressure = st.sidebar.slider('Blood Pressure', 0, 122, 69, 1)
 insulin = st.sidebar.slider("Insulin", 0, 846, 79, 1)
 bmi = st.sidebar.slider("BMI", 0.0, 67.1, 31.4, 0.1)
-dpf = st.sidebar.slider("Diabetes Pedigree Function",
-                        0.000, 2.420, 0.471, 0.001)
+dpf = st.sidebar.slider("Diabetes Pedigree Function", 0.000, 2.420, 0.471, 0.001)
 
 row = [pregnancies, glucose, bloodpressure, skinthickness, insulin, bmi, dpf, age]
 
 
 if __name__ == "__main__":
+    
     if (st.button('Find Health Status')):
-        feat_cols = ['Pregnancies', 'Glucose', 'BloodPressure',
-                    'SkinThickness', 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age']
-
-        sc, model = load(os.path.join(path, "resources", "scaler.joblib"),
-                        os.path.join(path, "resources", "model.joblib"))
+        feat_cols = ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age']
+    
+        sc, model = load(os.path.join(path, "resources", "scaler.joblib"),  os.path.join(path, "resources", "model.joblib"))
+    
         result = inference(row, sc, model, feat_cols)
 
         # display the output (Step 4)
         st.write(result)
+
+        with open(os.path.join(path, 'data', 'data.txt'), 'a') as fl:
+            fl.write(str(row))
+            fl.write("\n")
+            print (row)
