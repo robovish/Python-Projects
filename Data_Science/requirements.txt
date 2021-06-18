@@ -6,3 +6,4 @@ pandas==1.1.0
 pandas-profiling==2.8.0
 scikit-learn==0.23.2
 streamlit==0.64.0
+pymysql==1.0.2
