@@ -5,6 +5,8 @@ import joblib
 import pandas as pd
 from PIL import Image
 import os
+from datetime import datetime
+import pymysql as msql
 
 path = os.getcwd()
 
@@ -14,6 +16,10 @@ def load(scaler_path, model_path):
     model = joblib.load(model_path)
     return sc, model
 
+def db_connection():
+    cnx = msql.connect(user='root', password='secret', host= '192.168.1.150', port=3306, database = 'streamlit', autocommit=True)
+    cursor = cnx.cursor()
+    return (cnx, cursor)
 
 def inference(row, scaler, model, feat_cols):
     df = pd.DataFrame([row], columns=feat_cols)
@@ -44,6 +50,7 @@ dpf = st.sidebar.slider("Diabetes Pedigree Function", 0.000, 2.420, 0.471, 0.001
 
 row = [pregnancies, glucose, bloodpressure, skinthickness, insulin, bmi, dpf, age]
 
+db_row = [pregnancies, glucose, bloodpressure, skinthickness, insulin, bmi, dpf, age, str(datetime.now())]
 
 if __name__ == "__main__":
     
@@ -57,7 +64,14 @@ if __name__ == "__main__":
         # display the output (Step 4)
         st.write(result)
 
-        with open(os.path.join(path, 'data', 'data.txt'), 'a') as fl:
-            fl.write(str(row))
-            fl.write("\n")
-            print (row)
+
+# --------DB Write---------------
+        # with open(os.path.join(path, 'data', 'data.txt'), 'a') as fl:
+        #     fl.write(str(row))
+        #     fl.write("\n")
+        #     print (row)
+        qry = """INSERT INTO streamlit.diabetes_app (pregnancies, glucose, bloodpressure, skinthickness, insulin, bmi, dpf, age, create_datetime) VALUES """ + str(tuple(db_row)) +";"
+        cnx, cursor = db_connection()
+        cursor.execute(qry)
+        cnx.close()
+
