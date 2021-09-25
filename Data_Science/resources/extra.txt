@@ -1,0 +1,30 @@
+# command to start mysql container
+docker run -d -p 3306:3306 `
+     --network streamlit-app --network-alias mysql `
+     -v streamlit-mysql-data:/var/lib/mysql `
+     -e MYSQL_ROOT_PASSWORD=secret `
+     -e MYSQL_DATABASE=todos `
+     mysql:5.7
+	 
+	 
+# command to start app container with sync to above sql container 
+
+docker run -dp 8501:8501 --network streamlit-app robovish/streamlit:0.2
+
+# tbl DDL created used in the proj
+CREATE TABLE diabetes_app
+(
+  ID					  INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  pregnancies             INT ,
+  glucose           	  INT ,               
+  bloodpressure           INT ,                
+  skinthickness           INT ,                        
+  insulin				  INT ,
+  bmi					  FLOAT ,
+  dpf					  FLOAT ,
+  age					  INT ,
+  create_datetime		  DATETIME NOT NULL		
+);
+
+# columns for the project 
+('ID', 'pregnancies', 'glucose', 'bloodpressure', 'skinthickness', 'insulin', 'bmi', 'dpf', 'age', 'create_datetime')

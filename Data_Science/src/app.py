@@ -17,7 +17,7 @@ def load(scaler_path, model_path):
     return sc, model
 
 def db_connection():
-    cnx = msql.connect(user='root', password='secret', host= '192.168.1.150', port=3306, database = 'streamlit', autocommit=True)
+    cnx = msql.connect(user='root', password='secret', host= 'mysql', port=3306, database = 'streamlit', autocommit=True)
     cursor = cnx.cursor()
     return (cnx, cursor)
 
