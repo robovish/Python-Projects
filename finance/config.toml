@@ -16,8 +16,8 @@ FAST_EXECUTE = "True"
 
 [TELEGRAM]
 BASE_URL = "https://api.telegram.org/bot"
-BOT_TOKEN = "5031931743:AAF6IDFgQ7e36mN3DEpNSIdQfSzu8eflrvs"
-BOT_CHATID = "-669239901"
+BOT_TOKEN = ""
+BOT_CHATID = ""
 DISABLE_NOTIFICATION = "True"
 
 [theme]
