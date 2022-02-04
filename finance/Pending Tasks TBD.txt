@@ -1,37 +1,3 @@
-numpy
-scipy
-pandas
-streamlit
-scikit-learn
-jupyter
-openpyxl
-matplotlib
-plotly
-cufflinks
-seaborn
-pymysql
-pyodbc
-sqlalchemy
-
-ta-lib # Installation is using a separate wheel
-fyers-apiv2 
-investpy 
-mplfinance
-nsepy
-pyfolio
-pyalgotrade
-quandl
-quantlib
-tvdatafeed
-trendet
-vectorbt
-mftool
-nsetools
-truedata_ws
-
-python-telegram-bot
-
-
 Pending Tasks to be done:
 
 1. Group by for Indicator to process each group of stock and apply indicator and concatenate it then - Done 
