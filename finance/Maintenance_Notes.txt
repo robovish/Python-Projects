@@ -1,0 +1,12 @@
+1. Investing.com stocks_csv updated on 01/25 with below stocks missing:
+As per search using ISIN got only 2 stocks: ['SDBL-RE', 'VLIFEPP']. stocks.csv is most updated with 1800 stocks as of 1/25/2022
+
+2. DTIL and DVL have wrong mapping in NSEPY package.
+
+3. The master list prepared from the NSE website is updated daily by NSE by excluding stocks which are non tradeable temorarily or banned due to some
+reason. But those stocks will again be added to the list once ban is removed.
+
+4. API Info:
+a. Alice Blue: Do not have any intraday historical data available but Fyers has it to be downloaded by EOD.
+b. Both Alice blue and Fyers provide Live tick data which can be used for real time screening.
+c. Alice Blue has a limit of 250 stocks subscribe at a time for Live.

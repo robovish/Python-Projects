@@ -24,6 +24,9 @@ quandl
 quantlib
 tvdatafeed
 trendet
-
+vectorbt
+mftool
+nsetools
+truedata_ws
 
 python-telegram-bot

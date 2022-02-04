@@ -13,12 +13,63 @@ AUTOCOMMIT = "True"
 FAST_EXECUTE = "True"
 
 
-
 [TELEGRAM]
 BASE_URL = "https://api.telegram.org/bot"
 BOT_TOKEN = "5031931743:AAF6IDFgQ7e36mN3DEpNSIdQfSzu8eflrvs"
 BOT_CHATID = "-669239901"
 DISABLE_NOTIFICATION = "True"
+
+
+[WEB_AUTOMATION]
+SELENIUM_DRIVER_PATH = 'C:\\Program Files\\Google\\Chrome\\Application\\chromedriver.exe'
+SELENIUM_FILE_DOWNLOAD_PATH = "C:\\Users\\celds\\Downloads\\"
+
+
+[NSE]
+URL_LIST =  [
+    'https://www1.nseindia.com/content/equities/symbolchange.csv',
+    'https://www1.nseindia.com/content/equities/EQUITY_L.csv',
+    'https://archives.nseindia.com/content/equities/delisted.xlsx'
+]
+TABLE_LIST = ['india_stocks_daily', 'india_stocks_monthly', 'india_stocks_weekly','daily_india_screener',
+ 'master_india_screener', 'watchlist_notes', 'exclusion_inclusion_list']
+
+NSE_HOLIDAYS = ['2022-01-26', '2022-03-01', '2022-03-18', '2022-04-01', '2022-04-14', '2022-04-15', '2022-05-03', '2022-05-16', 
+'2022-08-09', '2022-08-15', '2022-08-16', '2022-08-31', '2022-10-05', '2022-10-24', '2022-10-26', '2022-11-08']
+
+INDEX_STOCK_URL_LIST = [
+        'https://www1.nseindia.com/content/indices/ind_nifty50list.csv',
+        'https://www1.nseindia.com/content/indices/ind_nifty100list.csv',
+        'https://www1.nseindia.com/content/indices/ind_nifty200list.csv',
+        'https://www1.nseindia.com/content/indices/ind_nifty500list.csv',
+        'https://www1.nseindia.com/content/indices/ind_niftynext50list.csv',
+        'https://www1.nseindia.com/content/indices/ind_niftymidcap150list.csv',
+        'https://www1.nseindia.com/content/indices/ind_niftysmallcap250list.csv',
+        'https://www1.nseindia.com/content/indices/ind_niftymicrocap250_list.csv',
+        'https://www1.nseindia.com/content/indices/ind_niftylargemidcap250list.csv',
+        'https://www1.nseindia.com/content/indices/ind_niftymidsmallcap400list.csv'
+]
+
+
+
+
+[BROKER_FYERS]
+CLIENT_ID = 'ESEAKW665W-100'
+REDIRECT_URI = 'https://trade.fyers.in/api-login'
+SECRET_KEY = 'N0VMRLT8JX'
+GRANT_TYPE= 'authorization_code'
+RESPONSE_TYPE = 'code'
+STATE = 'prod'
+LOG_PATH = 'D:\Python-Projects\finance\logs\fyers'
+
+[BROKER_ALICEBLUE]
+USER_ID = '208335'
+PASSWORD = 'Omdpv@1204'
+TWOFA = '1953'
+APP_ID = 'N4rdBzDzmc'
+APP_SECRET = '5yy6IzsyhBXp3nEOJA2MGSdTRbnete4DRehrM135PJNMeoIcFA0mQN9ZXBWqOVNj'
+LOG_PATH = 'D:\Python-Projects\finance\logs\alice_blue'
+
 
 [theme]
 primaryColor="#d33682"

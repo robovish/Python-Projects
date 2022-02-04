@@ -134,3 +134,5 @@ extensions.json
 # Data Science Files
 # .joblib
 data/
+RCCP_TOOL/
+Jupyter_PythonScripts/
