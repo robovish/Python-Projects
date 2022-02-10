@@ -37,9 +37,9 @@ Pending Tasks to be done:
 Websocket programming understand - Check out for fyers and aliceblue doc
 Multiprocessing and multithreading concepts and python implementation 
 Real time streaming using streamz/dask check out
-35. Backtesting engine development
-36. Understand Fundamental Analysis
-37. DB Bckup till 31st Dec 21 once patching is done for data
+35. Backtesting engine development - PENDING
+36. Understand Fundamental Analysis - INPROGRESS - 8 Feb 2022
+37. DB Bckup till 31st Dec 21 once patching is done for data - Done - on 10 Feb 2022. Next scheduled on July 1st 
 38. Current Symbol selection and filtration is causing problems due to diff stock categories. Need to write a SQL to get the correct symbols in masterview.py from daily tmp table
-
-Check out AGSTRA new symbol added or not to stocks.csv
+39. TTM_SQZ_wK check for offset setting by 1. - PENDING 
+40. Check out ADX logic and convert to Crossover scenario with DMP and DMN for Up and Down logic 

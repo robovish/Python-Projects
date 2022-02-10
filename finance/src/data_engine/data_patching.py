@@ -104,7 +104,7 @@ def adhoc_data_patch_weekly():
 
     """
     Function: 
-    This function is same as normal weekly download function. But to do adhoc data updates with specific dates and 
+    This function is same as normal weekly download function. But to do adhoc data updates with specific symbols, dates and 
     time this will be used so as to avoid affecting main function. For this query needs to be updated with list of symbols
     to operate upon.
     

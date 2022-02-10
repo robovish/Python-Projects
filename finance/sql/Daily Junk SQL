@@ -1,1 +1,11 @@
-SELECT
+SELECT * From INFORMATION_SCHEMA.COLUMNS Where TABLE_NAME = 'watchlist_notes'; 
+
+--ALTER TABLE watchlist_notes
+--ALTER COLUMN LIST_TYPE VARCHAR(30);
+
+SELECT count(*) from india_stocks_weekly where CREATED_DT  = '2022-02-07';
+
+SELECT * from watchlist_notes wn; where SYMBOL = 'GNFC';
+
+SELECT * FROM master_india_screener mis where CREATED_DT  = '2022-02-07';
+where SYMBOL = '20MICRONS';

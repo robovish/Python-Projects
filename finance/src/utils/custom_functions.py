@@ -12,8 +12,7 @@ def data_series_scale(data, val=[]):
     val = (data['CLOSE']-data['CLOSE'].min())/(data['CLOSE'].max()-data['CLOSE'].min())
     val.append(val)
     val.rename('CLOSE_SCALED', inplace=True)
-    # print (val)
-    print (type(val) , "custom_fn")
+    # print (type(val) , "custom_fn")
     return (val)
 
 def get_slope(array):

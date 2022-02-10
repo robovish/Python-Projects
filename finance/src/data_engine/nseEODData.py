@@ -58,7 +58,8 @@ def stock_daily_download():
 
             search_result.to_sql(name= 'india_stocks_daily', con= mssql_engine, if_exists='append', index=False, dtype = {'CREATED_DT' : Date, 'DATE': Date})
 
-            time.sleep(0.2)
+            time.sleep(0.1)
+
     #------------Below code queries Investing.com Investpy package only for stocks for which data is not in NSEPy-----
         else:
             print ("Investpy: ", val[0])
@@ -90,7 +91,7 @@ def stock_daily_download():
 
                 search_result_ip.to_sql(name= 'india_stocks_daily', con= mssql_engine, if_exists='append', index=False, dtype = {'CREATED_DT' : Date, 'DATE': Date})
 
-                time.sleep(2)
+                time.sleep(1)
             except:
                 print("Not found: ", val[0])
                 continue
@@ -146,7 +147,7 @@ def stock_weekly_download():
     # This has to be second last week Sunday from current Monday - Reduce 15 days from now date when runs on Monday
     start_date = (date.today() - timedelta(days=17)).strftime("%d/%m/%Y")
 
-    # This has to be last week Sunday from current Monday - Reduce 8 days from now date when runs on Monday
+    # This has to be last week Sunday from current Monday - Reduce 5 days from now date when runs on Monday
     end_date = (date.today() - timedelta(days=5)).strftime("%d/%m/%Y")
 
     print (start_date, end_date)

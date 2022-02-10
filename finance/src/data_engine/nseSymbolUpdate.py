@@ -66,7 +66,7 @@ def master_stock_db_update(path =None):
         df1 = df1[['UPDATE_TYPE', 'OLD_SYMBOL', 'NEW_SYMBOL', 'ISIN', 'UPDATE_DT', 'CREATED_DT']]
         df1.to_sql(name= 'india_symbol_update_tracker', con= mssql_engine, if_exists='append', index=False,  dtype = {'UPDATE_DT' : Date})
     else:
-        print('No Symbol updates found')
+        print('No Symbol found to be updated in tbl')
         
     os.remove(fname)
 
@@ -107,7 +107,7 @@ def symbol_chg_update(table_list, path = None):
                     index=False,  dtype = {'UPDATE_DT' : Date})
         # print (df2)
     else:
-        print('No Symbol updates found')
+        print('No Symbol Change updates found')
     
     os.remove(fname)
 
@@ -227,6 +227,13 @@ def stock_symbol_update_investpy():
 
 def index_stock_symbol_mapping():
 
+    """Function:
+    This function is used to download NSE Indexes and Stock mapping and store it in table: index_symbol_mapping
+
+    Comments:
+    Execute monthly once to replace the table data.
+    """
+
     nse_data_download(index_stock_url_list, selenium_driver_path, file_download_path)
 
     fname = {'NIFTY 50' :'ind_nifty50list.csv', 'NIFTY 100' :'ind_nifty100list.csv','NIFTY 200':'ind_nifty200list.csv',
@@ -251,7 +258,7 @@ def index_stock_symbol_mapping():
         df_symbol = pd.concat([df, df_symbol], axis=0)
         # print (df_symbol)
         
-        os.remove(path+fname)
+        os.remove(file_download_path+fname)
 
     df_symbol.to_sql('index_symbol_mapping', con= mssql_engine, if_exists='replace', index=False)
 

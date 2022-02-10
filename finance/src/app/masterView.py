@@ -53,7 +53,6 @@ if dashboard_type == 'MARKET VIEW':
 
             df =  data.sort_values(by=['SYMBOL', 'COUNTRY', 'DATE'], ascending=True, axis=0).groupby(['SYMBOL','COUNTRY']).apply(custom_functions.data_series_scale).reset_index(drop=True)
             data = pd.concat([data, df], axis=1, ignore_index=False)
-            print (data.columns)
             
             st.plotly_chart(chart.plotly_index_chart(data))
 
@@ -91,15 +90,16 @@ elif dashboard_type in 'DAILY SCREENER':
 
         with st.form(key = 'Watchlist'):
             symbol = st.text_input('SYMBOL', value = symbol_selected, max_chars = 20,)
+            list_type = st.selectbox("LIST TYPE", ['INTRA_SHORT','INTRA_LONG', 'SWING_SHORT', 'SWING_LONG'])
             notes = st.text_area('NOTES', "", max_chars = 200, height = 10)
             created = date.today() 
 
             submitted = st.form_submit_button('Submit')
 
             if submitted:
-                params = (symbol, notes, created)
-                qry = """INSERT INTO watchlist_notes(SYMBOL, NOTES, CREATED_DT) VALUES (?,?,?)"""
-                cursor.execute(qry, symbol, notes, created)    
+                params = (symbol, list_type, notes, created)
+                qry = """INSERT INTO watchlist_notes(SYMBOL, LIST_TYPE, NOTES, CREATED_DT) VALUES (?,?,?,?)"""
+                cursor.execute(qry, symbol, list_type, notes, created)    
                 st.write("Submitted Successfully")
         
     
@@ -129,5 +129,11 @@ elif dashboard_type in 'DAILY SCREENER':
 
 
 elif dashboard_type in 'SCREENER ANALYSIS':
-    pass
+    st.write("STOCKS IN SQZ OR BREAKOUT")
+    df_sqz = pd.read_sql(query.screener_analysis_sqz, con = cnxn)
+    st.dataframe(df_sqz)
+
+    st.write("STOCKS IN TREND")
+    df_trend = pd.read_sql(query.screener_analysis_trend, con = cnxn)
+    st.dataframe(df_trend)
     
